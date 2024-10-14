@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import Pais from './Pais'
 
+
 function Boddy() {
     const [hotel, setHotel] = useState([])
-    const [selectedCity, setSelectedCity] = useState('Whole, Finland');
+    const [selectedCity, setSelectedCity] = useState('Finland');
+
+
 
     useEffect(() => {
         axios.get('./stays.json')
@@ -14,10 +17,18 @@ function Boddy() {
             .finally(() => console.log('completed'))
     }, [])
 
-    const handleCityClick = (city, country) => {
-        setSelectedCity(`${city}, ${country}`);
-      };
-      
+    const handleCityClick = (city) => {
+        setSelectedCity(`${city}`);
+    };
+
+
+
+    function filter() {
+        const rs = hotel.filter(fc => fc.city.toLowerCase() === selectedCity.toLowerCase())
+        setHotel(rs)
+    }
+
+
     return (
         <div className='flex flex-col justify-center p-10p p-3'>
             <div className='flex flex-col md:flex-row justify-between py-3 gap-8'>
@@ -34,7 +45,7 @@ function Boddy() {
                     </button>
                 </div>
             </div>
-            <div id='modal' className="fixed inset-0 flex justify-center overflow-y-auto overflow-x-hidden w-full h-[calc(100%-1rem)] max-h-full bg-slate-950 bg-opacity-50">
+            <div id='modal' className="hidden fixed inset-0 flex justify-center overflow-y-auto overflow-x-hidden w-full h-[calc(100%-1rem)] max-h-full bg-slate-950 bg-opacity-50">
                 <div className="relative p-4 w-full max-w-2xl">
                     <div className="flex flex-col rounded-md shadow h-3/4 bg-white p-4 gap-5">
 
@@ -57,7 +68,7 @@ function Boddy() {
                                 <div className='absolute hidden top-20 peer-checked:block'>
                                     <ul className='flex flex-col gap-3'>
                                         <Pais
-                                        handleCityClick = {handleCityClick}
+                                            handleCityClick={handleCityClick}
                                         />
                                     </ul>
                                 </div>
@@ -72,7 +83,7 @@ function Boddy() {
 
 
                             </label>
-                            <button className="bg-red-500 bg-opacity-90 active:bg-primary active:bg-opacity-80 px-6 font-bold items-center w-3/12 relative inline-flex  py-2 border border-gray-200 border-opacity-70 text-gray-800  rounded-r-lg hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button">Search
+                            <button className="bg-red-500 bg-opacity-90 active:bg-primary active:bg-opacity-80 px-6 font-bold items-center w-3/12 relative inline-flex  py-2 border border-gray-200 border-opacity-70 text-gray-800  rounded-r-lg hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button" onClick={filter}>Search
 
                             </button>
                         </div>
@@ -81,7 +92,7 @@ function Boddy() {
                 </div>
             </div>
             <div className='flex justify-between py-3'>
-                <h2 className='font-bold text-2xl'>Stays in Finland</h2>
+                <h2 className='font-bold text-2xl'>Stays in {selectedCity}</h2>
                 <h2 className=' text-lg'>12+ stays</h2>
             </div>
             <div className='flex align-center justify-center'>
