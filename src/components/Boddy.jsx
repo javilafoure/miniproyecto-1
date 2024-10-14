@@ -7,6 +7,7 @@ import Pais from './Pais'
 function Boddy() {
     const [hotel, setHotel] = useState([])
     const [selectedCity, setSelectedCity] = useState('Finland');
+    const [guests, setguests] = useState();
 
 
 
@@ -15,7 +16,7 @@ function Boddy() {
             .then(data => setHotel(data.data))
             .catch((error) => console.log(error))
             .finally(() => console.log('completed'))
-    }, [])
+    }, [selectedCity])
 
     const handleCityClick = (city) => {
         setSelectedCity(`${city}`);
@@ -26,6 +27,11 @@ function Boddy() {
     function filter() {
         const rs = hotel.filter(fc => fc.city.toLowerCase() === selectedCity.toLowerCase())
         setHotel(rs)
+    }
+
+    function guestsFilter() {
+        const rs = hotel.includes(fc => fc.maxGuests === guests)
+        setguests(rs)
     }
 
 
@@ -78,7 +84,11 @@ function Boddy() {
                                 <span className="font-extrabold mb-1">Guests</span>
                                 <div className="text-gray-400">0</div>
                                 <div className='absolute hidden top-20 peer-checked:block'>
-                                    <h2>Cantidad</h2>
+                                    <div className="mt-2">
+                                        <button className="mr-2 relative px-1 rounded-md text-gray-800 border border-gray-400 hover:text-gray-600 focus:border-blue-300 focus:outline-none"> －</button>
+                                        <span>0</span>
+                                        <button className="ml-2 relative px-1 rounded-md text-gray-800 border border-gray-400 hover:text-gray-600 focus:border-blue-300 focus:outline-none">＋</button>
+                                    </div>
                                 </div>
 
 
