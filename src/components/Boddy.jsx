@@ -67,7 +67,7 @@ function Boddy() {
 
                         </div>
                         <div className="search-wrapper relative z-0 inline-flex shadow-lg rounded-2xl w-full">
-                            <label className="flex-col items-left w-full px-9 py-2 relative inline-flex border rounded-l-lg border-gray-200 border-opacity-70 bg-white text-gray-800 hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button">
+                            <label className="flex-col items-left w-full p-1 md:px-9 py-2 relative inline-flex border rounded-l-lg border-gray-200 border-opacity-70 bg-white text-gray-800 hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button">
                                 <input type="radio" name='opt' className='peer hidden' />
                                 <span className="font-extrabold mb-1">Location</span>
                                 <div className="block">{selectedCity}</div>
@@ -79,7 +79,7 @@ function Boddy() {
                                     </ul>
                                 </div>
                             </label>
-                            <label className=" flex-col items-left w-full px-9  relative inline-flex py-2 border border-gray-200 border-opacity-70 bg-white leading-5 text-gray-800  hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button">
+                            <label className=" flex-col items-left w-full p-1 md:px-9  relative inline-flex py-2 border border-gray-200 border-opacity-70 bg-white leading-5 text-gray-800  hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button">
                                 <input type="radio" name='opt' className='peer hidden' />
                                 <span className="font-extrabold mb-1">Guests</span>
                                 <div className="text-gray-400">0</div>
@@ -93,7 +93,7 @@ function Boddy() {
 
 
                             </label>
-                            <button className="bg-red-500 bg-opacity-90 active:bg-primary active:bg-opacity-80 px-6 font-bold items-center w-3/12 relative inline-flex  py-2 border border-gray-200 border-opacity-70 text-gray-800  rounded-r-lg hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button" onClick={filter}>Search
+                            <button className="bg-red-500 bg-opacity-90 active:bg-primary active:bg-opacity-80 p-1 md:px-6 font-bold items-center w-3/12 relative inline-flex  py-2 border border-gray-200 border-opacity-70 text-gray-800  rounded-r-lg hover:text-gray-600  focus:border-blue-300 focus:outline-none active:bg-white" type="button" onClick={filter}>Search
 
                             </button>
                         </div>
