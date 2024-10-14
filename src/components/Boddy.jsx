@@ -7,15 +7,15 @@ function Boddy() {
 
     useEffect(() => {
         axios.get('./stays.json')
-        .then(data => setHotel(data.data))
-        .catch((error)=> console.log(error))
-        .finally(()=> console.log('completed'))
-    },[])
+            .then(data => setHotel(data.data))
+            .catch((error) => console.log(error))
+            .finally(() => console.log('completed'))
+    }, [])
     console.log(hotel)
 
     return (
-        <div className='flex flex-col justify-center p-3'>
-            <div className='flex justify-between py-10 md:px-96'>
+        <div className='flex flex-col justify-center md:px-96 p-3'>
+            <div className='flex flex-col md:flex-row justify-between py-3 gap-8'>
                 <div className='flex'>
                     <img className='h-8' src="./logo.beef9462.svg" alt="" />
                 </div>
@@ -29,12 +29,13 @@ function Boddy() {
                     </button>
                 </div>
             </div>
-            <div className='flex justify-between md:px-96 p-3'>
+            
+            <div className='flex justify-between py-3'>
                 <h2 className='font-bold text-2xl'>Stays in Finland</h2>
                 <h2 className=' text-lg'>12+ stays</h2>
             </div>
             <div className='flex align-center justify-center'>
-                <div className='grid grid-cols-1 md:grid-cols-3 md:px-32 py-6 gap-16'>
+                <div className='grid grid-cols-1 md:grid-cols-3 py-6 gap-16'>
 
                     {
                         hotel &&
